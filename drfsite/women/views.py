@@ -49,10 +49,7 @@ class WomenAPIView(APIView):
             women = Women.objects.get(pk=pk)
         except Women.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-
         women.delete()
-
-
         return Response({"post": "delete post " + str(pk)})
 
 # class WomenAPIView(generics.ListAPIView):
