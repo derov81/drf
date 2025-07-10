@@ -18,15 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from women.views import *
-from rest_framework import routers
-
-router = routers.SimpleRouter()
-router.register(r'women', WomenVieSet, basename='women')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls)),
-    # path('api/v1/womenlist/', WomenVieSet.as_view({'get':'list'})),
-    # path('api/v1/womenlist/<int:pk>/', WomenVieSet.as_view({'put':'update'})),
+    path('api/v1/women/', WomenAPIList.as_view()),
+    path('api/v1/women/<int:pk>/', WomenAPIUpdate.as_view()),
+    path('api/v1/womendelete/<int:pk>/', WomenAPIDestroy.as_view()),
 
 ]
